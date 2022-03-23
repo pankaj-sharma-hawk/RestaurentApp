@@ -1,18 +1,23 @@
 {
   "posts": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "id": 2,
+      "name": "cxswew",
+      "email": "iyuh",
+      "mobile": "ljlkjl",
+      "address": "lkjlk",
+      "services": "iuoikjjhk"
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "id": 3,
+      "name": "dsdfsdfs",
+      "email": ".mknm",
+      "mobile": "m,nkjnk",
+      "address": "klhkjhiuyi",
+      "services": "98798"
     }
   ],
+  "comments": [],
   "profile": {
     "name": "typicode"
   }

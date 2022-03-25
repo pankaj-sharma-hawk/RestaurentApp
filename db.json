@@ -4,17 +4,34 @@
       "id": 2,
       "name": "cxswew",
       "email": "iyuh",
-      "mobile": "ljlkjl",
+      "mobile": "44444",
       "address": "lkjlk",
       "services": "iuoikjjhk"
     },
     {
-      "id": 3,
-      "name": "dsdfsdfs",
-      "email": ".mknm",
-      "mobile": "m,nkjnk",
-      "address": "klhkjhiuyi",
-      "services": "98798"
+      "id": 4,
+      "name": "hkh",
+      "email": "dsfsd",
+      "mobile": "kjklj",
+      "address": "jkljl",
+      "services": "ljlk"
+    },
+    {
+      "id": 5,
+      "name": "dsf",
+      "email": "dsf",
+      "mobile": "dsf",
+      "address": "dsf",
+      "services": "dsfs"
+    }
+  ],
+  "signup": [
+    {
+      "name": "sdf",
+      "mobileNumber": "sdf",
+      "email": "dsf",
+      "password": "dsfsf",
+      "id": 1
     }
   ],
   "comments": [],

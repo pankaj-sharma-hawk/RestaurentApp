@@ -13,9 +13,12 @@ export class RestaurentDashComponent implements OnInit {
   formValue!: FormGroup;
   restaurentModelObject: Restaurent = new Restaurent;
   allRestaurentRecord: any;
+  isUpdate!:boolean;
+
   constructor(private formBuilder: FormBuilder, private api: ApiService) { }
 
   ngOnInit(): void {
+    this.isUpdate=false;
     this.formValue = this.formBuilder.group({
       name: [''],
       email: [''],
@@ -26,7 +29,13 @@ export class RestaurentDashComponent implements OnInit {
     this.getAllRestaurentData();
   }
 
+  clickAddRestaurant(){
+    this.isUpdate=false;
+    this.formValue.reset();
+  }
+
   addRestaurent() {
+    this.isUpdate=false;
     this.mappingObject();
     this.api.postRestaurentRecord(this.restaurentModelObject).subscribe(res => {
       alert("Record Added Success fully");
@@ -40,18 +49,25 @@ export class RestaurentDashComponent implements OnInit {
   }
 
   getAllRestaurentData() {
+    this.isUpdate=false;
     this.api.getRestaurentRecord().subscribe(res => {
       this.allRestaurentRecord = res;
     })
   }
 
-  updateRestaurentData(data: any) {
-    this.api.upadateRestaurentRecord(data, data.id).subscribe(res => {
-      alert("Record Updated Successfully");
-    })
+  onEdit(data: any) {
+    this.isUpdate=true;
+    this.restaurentModelObject.id=data.id;
+    this.formValue.controls["name"].setValue(data.name);
+    this.formValue.controls["email"].setValue(data.email);
+    this.formValue.controls["mobile"].setValue(data.mobile);
+    this.formValue.controls["address"].setValue(data.address);
+    this.formValue.controls["services"].setValue(data.services);
+
   }
 
   deleteRestaurentData(data: any) {
+    this.isUpdate=false;
     if (confirm("Do you want to Delete this Record ?")) {
       this.api.deleteRestaurentRecord(data.id).subscribe(res => {
         alert("Delete Record Successfully");
@@ -60,13 +76,26 @@ export class RestaurentDashComponent implements OnInit {
     }
   }
 
+  updateRestaurentData(){
+    this.isUpdate=true;
+    this.mappingObject();
+    this.api.upadateRestaurentRecord(this.restaurentModelObject,this.restaurentModelObject.id).subscribe(res=>{
+        alert("Data Update Successfully");
+        this.getAllRestaurentData();
+    },err=>{
+      alert("Updation has some issues");
+    })
+  }
+
 
   private mappingObject() {
+   
     this.restaurentModelObject.name = this.formValue.value.name;
     this.restaurentModelObject.email = this.formValue.value.email;
     this.restaurentModelObject.mobile = this.formValue.value.mobile;
     this.restaurentModelObject.address = this.formValue.value.address;
     this.restaurentModelObject.services = this.formValue.value.services;
+
   }
 
 }
